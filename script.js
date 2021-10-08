@@ -1,5 +1,7 @@
+noseX = 0;
+noseY = 0;
 function preload(){
-
+    mushtache = loadImage("https://i.postimg.cc/255s0JBK/m.png");
 }
 
 function setup(){
@@ -20,13 +22,14 @@ function modelLoaded(){
 function gotPose(results){
     if(results.length > 0){
         console.log(results);
-        console.log("noseX: " + results[0].pose.nose.x);
-        console.log("noseY: " + results[0].pose.nose.y);
+        noseX = results[0].pose.nose.x;
+        noseY = results[0].pose.nose.y;
     }
 }
 
 function draw(){
     image(video, 0, 0, 300, 300);
+    image(mushtache, noseX-28, noseY, 60, 30);
 }
 
 function takeSnapshot(){
